@@ -17,7 +17,7 @@ export const GallerySection: React.FC = () => {
   const photos: GalleryPhoto[] = [
     {
       id: 1,
-      url: '/src/assets/images/hero_kerala_wedding_couple_1793882731759.jpg',
+      url: '/images/hero_couple.jpg',
       caption: 'Golden Temple Courtyard Blessings',
       malayalamCaption: 'ക്ഷേത്ര തിരുമുറ്റത്തെ പുണ്യ നിമിഷങ്ങൾ',
       subtext: 'Rahul & Anjali during golden hour at the ancient teak pillar shrine with burning Nilavilakku.',
@@ -25,7 +25,7 @@ export const GallerySection: React.FC = () => {
     },
     {
       id: 2,
-      url: '/assets/aistudio/752804894000981978_738df2c6.jpeg',
+      url: '/images/bride.jpeg',
       caption: 'Anjali: The Serene Kerala Bride',
       malayalamCaption: 'മംഗല്യപ്പട്ടുടുത്ത് സുസ്മേരവദനയായി അഞ്ജലി',
       subtext: 'Traditional Kasavu saree and temple gold ornaments with fragrant white Mullappoo.',
@@ -33,7 +33,7 @@ export const GallerySection: React.FC = () => {
     },
     {
       id: 3,
-      url: '/assets/aistudio/Royal_South_Indian_Groom__Meditative_Traditional_Wedding_Aesthetic_85ee2a8e.jpeg',
+      url: '/images/groom.jpeg',
       caption: 'Rahul: The Auspicious Groom',
       malayalamCaption: 'പരമ്പരാഗത രാജകീയ വേഷത്തിൽ രാഹുൽ',
       subtext: 'Traditional royal attire with sacred tilak and ornate temple jewelry.',
@@ -41,7 +41,7 @@ export const GallerySection: React.FC = () => {
     },
     {
       id: 4,
-      url: '/src/assets/images/kerala_wedding_ceremony_1793882734185.jpg',
+      url: '/images/ceremony.jpg',
       caption: 'Sacred Floral Pushpavrishti',
       malayalamCaption: 'പുഷ്പവൃഷ്ടിയും താലികെട്ടും',
       subtext: 'Offering sacred lotus and marigold blossoms at the flower-draped wedding mandapam.',
@@ -49,7 +49,7 @@ export const GallerySection: React.FC = () => {
     },
     {
       id: 5,
-      url: '/src/assets/images/kerala_kalyana_sadhya_1793882734689.jpg',
+      url: '/images/sadhya.jpg',
       caption: 'The Royal Kalyana Sadhya',
       malayalamCaption: 'വിഭവസമൃദ്ധമായ പരമ്പരാഗത സദ്യ',
       subtext: '24 authentic vegetarian delicacies served in royal tradition on fresh banana leaves.',
@@ -90,6 +90,14 @@ export const GallerySection: React.FC = () => {
               src={photo.url}
               alt={photo.caption}
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (photo.id === 2 && !target.src.includes('752804894000981978')) {
+                  target.src = '/assets/aistudio/752804894000981978_738df2c6.jpeg';
+                } else if (photo.id === 3 && !target.src.includes('Royal_South_Indian_Groom')) {
+                  target.src = '/assets/aistudio/Royal_South_Indian_Groom__Meditative_Traditional_Wedding_Aesthetic_85ee2a8e.jpeg';
+                }
+              }}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
@@ -164,6 +172,15 @@ export const GallerySection: React.FC = () => {
                 src={photos[selectedPhotoIndex].url}
                 alt={photos[selectedPhotoIndex].caption}
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  const currentPhoto = photos[selectedPhotoIndex];
+                  if (currentPhoto.id === 2 && !target.src.includes('752804894000981978')) {
+                    target.src = '/assets/aistudio/752804894000981978_738df2c6.jpeg';
+                  } else if (currentPhoto.id === 3 && !target.src.includes('Royal_South_Indian_Groom')) {
+                    target.src = '/assets/aistudio/Royal_South_Indian_Groom__Meditative_Traditional_Wedding_Aesthetic_85ee2a8e.jpeg';
+                  }
+                }}
                 className="max-h-[72vh] max-w-full object-contain mx-auto"
               />
             </div>

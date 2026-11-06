@@ -30,7 +30,7 @@ export const EventsSection: React.FC = () => {
       address: 'East Nada, Guruvayur, Thrissur, Kerala 680101',
       description: 'The sanctified mangalya sutra dharanam (thalikettu) ceremony in Vrishika Rashi auspicious lagna with Vedic chants, nadaswaram recital, and offering of fragrant flower garlands.',
       mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Guruvayur+Temple+Auditorium+Kerala',
-      imageUrl: '/src/assets/images/kerala_wedding_ceremony_1793882734185.jpg',
+      imageUrl: '/images/ceremony.jpg',
       icon: 'ceremony',
     },
     {
@@ -44,7 +44,7 @@ export const EventsSection: React.FC = () => {
       address: 'Guruvayur Devaswom Convention Centre, Guruvayur',
       description: 'An authentic 24-dish vegetarian Kerala banquet served on pristine plantain banana leaves with Parippu & pure ghee, Avial, Thoran, Kalan, Olan, crunchy banana chips, sweet sharkara upperi, and varieties of warm Ada Pradhaman & Palada Payasam.',
       mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Guruvayur+Devaswom+Convention+Centre',
-      imageUrl: '/src/assets/images/kerala_kalyana_sadhya_1793882734689.jpg',
+      imageUrl: '/images/sadhya.jpg',
       icon: 'sadhya',
     },
     {
@@ -85,6 +85,14 @@ export const EventsSection: React.FC = () => {
                   src={evt.imageUrl}
                   alt={evt.englishTitle}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.src.includes('src/assets/images')) {
+                      target.src = evt.id === 'thalikettu' 
+                        ? '/src/assets/images/kerala_wedding_ceremony_1793882734185.jpg'
+                        : '/src/assets/images/kerala_kalyana_sadhya_1793882734689.jpg';
+                    }
+                  }}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

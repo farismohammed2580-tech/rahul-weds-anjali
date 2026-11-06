@@ -25,9 +25,15 @@ export const CoupleSection: React.FC = () => {
             {/* Image Container */}
             <div className="relative w-full h-full rounded-t-[110px] rounded-b-xl overflow-hidden shadow-inner bg-[#FAF6EE]">
               <img
-                src="/assets/aistudio/Royal_South_Indian_Groom__Meditative_Traditional_Wedding_Aesthetic_85ee2a8e.jpeg"
-                alt="Kerala Hindu Groom Rahul in royal traditional attire"
+                src="/images/groom.jpeg"
+                alt="Kerala Hindu Groom Rahul in royal traditional wedding attire"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('Royal_South_Indian_Groom')) {
+                    target.src = '/assets/aistudio/Royal_South_Indian_Groom__Meditative_Traditional_Wedding_Aesthetic_85ee2a8e.jpeg';
+                  }
+                }}
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
@@ -75,9 +81,15 @@ export const CoupleSection: React.FC = () => {
             {/* Image Container */}
             <div className="relative w-full h-full rounded-t-[110px] rounded-b-xl overflow-hidden shadow-inner bg-[#FAF6EE]">
               <img
-                src="/assets/aistudio/752804894000981978_738df2c6.jpeg"
+                src="/images/bride.jpeg"
                 alt="Kerala Hindu Bride Anjali in traditional Kasavu saree with temple jewelry"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.includes('752804894000981978')) {
+                    target.src = '/assets/aistudio/752804894000981978_738df2c6.jpeg';
+                  }
+                }}
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
